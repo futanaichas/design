@@ -44,6 +44,7 @@
 | ------------- | -------- | ---------------- |
 | archive_id    | INT      | 帖子id           |
 | author_id     | INT      | 作者uid(外键)    |
+| weights       | TINYINT  | 权重，用于置顶   |
 | title         | CHAR     | 标题             |
 | kind          | TINYINT  | 帖子类型         |
 | cover         | CHAR     | 封面             |
@@ -60,15 +61,16 @@
 
 ## discuss
 
-| key        | type     | description  |
-| ---------- | -------- | ------------ |
-| discuss_id | INT      | 评论id       |
-| archive_id | INT      | 帖子id(外键) |
-| author_id  | INT      | 写者id(外键) |
-| seat       | INT      | 楼层         |
-| contents   | CHAR     | 评论内容     |
-| star       | INT      | 收到的赞     |
-| create_at  | DATETIME | 创建时间     |
-| delete_at  | DATETIME | 删除时间     |
-| options    | TEXT     | 扩展、可选   |
+| key        | type     | description    |
+| ---------- | -------- | -------------- |
+| discuss_id | INT      | 评论id         |
+| archive_id | INT      | 帖子id(外键)   |
+| author_id  | INT      | 写者id(外键)   |
+| weights    | TINYINT  | 权重，用于置顶 |
+| seat       | INT      | 楼层           |
+| contents   | CHAR     | 评论内容       |
+| star       | INT      | 收到的赞       |
+| create_at  | DATETIME | 创建时间       |
+| delete_at  | DATETIME | 删除时间       |
+| options    | TEXT     | 扩展、可选     |
 
