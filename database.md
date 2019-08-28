@@ -6,35 +6,40 @@
 
 ## User
 
-| key        | type     | description        |
-| ---------- | -------- | ------------------ |
-| uid        | INT      | 用户id，主键       |
-| email      | CHAR     | 邮箱               |
-| permission | TINYINT  | 权限               |
-| nickname   | CHAR     | 用户名             |
-| birthday   | DATETIME | 创建用户时间       |
-| sex        | CHAR     | 性别               |
-| avatar     | CHAR     | 头像               |
-| publish    | INT      | 发布帖子数量       |
-| heat       | INT      | 所有帖子的访问总量 |
-| star       | INT      | 收到的赞           |
-| hate       | INT      | 收到的批评         |
+| key           | type     | description        |
+| :------------ | :------- | :----------------- |
+| uid           | INT      | 用户id，主键       |
+| email         | CHAR     | 邮箱               |
+| permission    | TINYINT  | 权限               |
+| nickname      | CHAR     | 用户名             |
+| status        | INT      | 状态，封禁等       |
+| birthday      | DATETIME | 创建用户时间       |
+| sex           | CHAR     | 性别               |
+| avatar        | CHAR     | 头像               |
+| publish       | INT      | 发布帖子数量       |
+| heat          | INT      | 所有帖子的访问总量 |
+| star          | INT      | 收到的赞           |
+| hate          | INT      | 收到的批评         |
+| archive_array | TEXT     | 帖子id的json数组   |
+| options       | TEXT     | 扩展、可选         |
 
 
 
 ## Archive
 
-| key        | type     | description      |
-| ---------- | -------- | ---------------- |
-| id         | INT      | 帖子id           |
-| author_uid | INT      | 作者uid          |
-| title      | CHAR     | 标题             |
-| kind       | TINYINT  | 帖子类型         |
-| contents   | TEXT     | 帖子内容         |
-| views      | INT      | 访问量           |
-| update_at  | DATETIME | 最后一次更新时间 |
-| create_at  | DATETIME | 创建时间         |
-| delete_at  | DATETIME | 删除时间         |
+| key           | type     | description      |
+| ------------- | -------- | ---------------- |
+| id            | INT      | 帖子id           |
+| author_uid    | INT      | 作者uid          |
+| title         | CHAR     | 标题             |
+| kind          | TINYINT  | 帖子类型         |
+| contents      | TEXT     | 帖子内容         |
+| views         | INT      | 访问量           |
+| update_at     | DATETIME | 最后一次更新时间 |
+| create_at     | DATETIME | 创建时间         |
+| delete_at     | DATETIME | 删除时间         |
+| discuss_array | TEXT     | 评论的id数组     |
+| options       | TEXT     | 扩展、可选       |
 
 
 
@@ -44,10 +49,11 @@
 | ---------- | -------- | ----------- |
 | discuss_id | INT      | 评论id      |
 | archive_id | INT      | 帖子id      |
-| user_id    | INT      | 写者id      |
+| author_id  | INT      | 写者id      |
 | seat       | INT      | 楼层        |
 | contents   | CHAR     | 评论内容    |
 | star       | INT      | 收到的赞    |
 | create_at  | DATETIME | 创建时间    |
 | delete_at  | DATETIME | 删除时间    |
+| options    | TEXT     | 扩展、可选  |
 
