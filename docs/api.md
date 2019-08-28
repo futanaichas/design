@@ -101,7 +101,7 @@ Request = {
     }
     query:{
     	limit:number
-}
+    }
 }
 ```
 
@@ -118,7 +118,7 @@ interface Response {
 interface Item {
     id: number
     nickname: string
-	avatar:string
+    avatar:string
     create_at: string
     contents：string
 }
