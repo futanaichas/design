@@ -46,6 +46,8 @@
 | author_id     | INT      | 作者uid(外键)    |
 | title         | CHAR     | 标题             |
 | kind          | TINYINT  | 帖子类型         |
+| cover         | CHAR     | 封面             |
+| summary       | CHAR     | 摘要             |
 | contents      | TEXT     | 帖子内容         |
 | views         | INT      | 访问量           |
 | update_at     | DATETIME | 最后一次更新时间 |
