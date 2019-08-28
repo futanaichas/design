@@ -3,5 +3,5 @@
 
 ## Table of contents
 + [UI]()
-+ [数据库](/database.md)
-+ [api接口](/api.md)
++ [数据库](/docs/database.md)
++ [api接口](/docs/api.md)
