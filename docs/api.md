@@ -43,12 +43,12 @@ interface Archive {
 	title: string
 	author: string
 	author_id: number
-    summary: string //摘要
-    cover: string   //封面
-    kinds: number   //种类
-	views: number
 	create_at: string
 	update_at: string
+    summary: string 
+    cover: string   
+    kinds: number   
+    views: number
 }
 ```
 
