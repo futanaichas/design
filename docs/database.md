@@ -6,14 +6,14 @@
 
 ## User
 
-| key        | type    | description        |
-| :--------- | :------ | :----------------- |
-| uid        | INT     | 用户id，主键       |
-| email      | CHAR    | 邮箱               |
-| nickname   | CHAR    | 用户名             |
-| password   | CHAR    | 密码               |
-| status     | INT     | 状态，封禁等       |
-| user_dlc   | INT     | 指向User_dlc(外键) |
+| key      | type | description        |
+| :------- | :--- | :----------------- |
+| uid      | INT  | 用户id，主键       |
+| email    | CHAR | 邮箱               |
+| username | CHAR | 用户名             |
+| password | CHAR | 密码               |
+| status   | INT  | 状态，封禁等       |
+| user_dlc | INT  | 指向User_dlc(外键) |
 
 
 
@@ -46,6 +46,7 @@
 | author_id     | INT      | 作者uid(外键)    |
 | weights       | TINYINT  | 权重，用于置顶   |
 | title         | CHAR     | 标题             |
+| hide          | CHAR     | 隐藏的内容       |
 | kind          | TINYINT  | 帖子类型         |
 | cover         | CHAR     | 封面             |
 | summary       | CHAR     | 摘要             |
