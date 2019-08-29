@@ -216,6 +216,7 @@ interface Item {
     create_at: string
     update_at: string
     summary: string //摘要
+    discuss_count: number //评论数量
     cover: string   
     kinds: number
     views: number

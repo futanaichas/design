@@ -46,6 +46,7 @@
 | author_id     | INT      | 作者uid(外键)    |
 | weights       | TINYINT  | 权重，用于置顶   |
 | title         | CHAR     | 标题             |
+| discuss_count | INT      | 评论数量         |
 | hide          | CHAR     | 隐藏的内容       |
 | kind          | TINYINT  | 帖子类型         |
 | cover         | CHAR     | 封面             |
