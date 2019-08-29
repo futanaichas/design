@@ -13,7 +13,6 @@
 
 + `POST /api/archive/new` 创建帖子
 + `GET /api/archive/del/$id` 删除帖子
-
 + `POST /api/archive/modify/$id` 修改帖子
 + `GET /api/archive/detail/$id` 获取帖子详细信息
 + `GET /api/archive/dashboard/$page` 按照页数获取帖子列表
@@ -26,6 +25,7 @@
 ### [search-service](#search-service)
 
 + `GET /api/search` 搜索帖子
++ `GET /api/search/target` 返回搜索热度关键词
 
 ### [session-service](#session-service)
 
@@ -37,7 +37,6 @@
 ### [static-service](#static-service)
 
 + `POST /api/static/upload` 上传资源
-
 + `GET /static/$date/$hash` 获取静态资源
 
 
@@ -426,6 +425,28 @@ interface Item {
     cover: string   
     kinds: number
     views: number
+}
+```
+
+
+
+## GET /api/search/target
+
+```typescript
+// 例如：GET `/api/search/target` 搜索相关的内容
+Request = {
+    method: "GET",
+}
+```
+
+```typescript
+interface Response {
+    code: number
+    data: Item[]
+}
+interface Item {
+    keyword: string
+    heat: number
 }
 ```
 
