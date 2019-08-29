@@ -16,7 +16,7 @@
 
 + `POST /api/archive/modify/$id` 修改帖子
 + `GET /api/archive/detail/$id` 获取帖子详细信息
-+ `GET /api/archive/table/$page` 按照页数获取帖子列表
++ `GET /api/archive/dashboard/$page` 按照页数获取帖子列表
 
 ### [discuss-service](#discuss-service)
 
@@ -42,7 +42,7 @@
 
 
 
-## account-service
+## # account-service
 
 > account-service 账户相关操作
 
@@ -151,7 +151,7 @@ interface Response {
 
 
 
-## archive-service
+## # archive-service
 
 > archive-service 用于帖子相关操作
 
@@ -186,10 +186,10 @@ interface Response {
 
 
 
-### GET /api/archive/table/$page
+### GET /api/archive/dashboard/$page
 
 ```typescript
-// 例如：GET `/api/archive/table/1` 获取第一页的数据
+// 例如：GET `/api/archive/dashboard/1` 获取第一页的数据
 Request = {
     method: "GET",
     params:{
@@ -318,7 +318,7 @@ interface Response {
 
 
 
-## discuss-service
+## # discuss-service
 
 > discuss-service 评论相关操作
 
@@ -386,7 +386,7 @@ interface Item {
 
 
 
-## search-service
+## # search-service
 
 > 搜索模块
 
@@ -432,7 +432,7 @@ interface Item {
 
 
 
-## session-service
+## # session-service
 
 > 在线会话模块
 
@@ -548,7 +548,7 @@ interface Response {
 
 
 
-## static-service
+## # static-service
 
 > 静态文件处理模块
 
