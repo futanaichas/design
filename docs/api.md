@@ -585,7 +585,8 @@ Request = {
     }
     body:{
     	file: File //文件
-        size: string // 分辨率 例如@120x180
+    	type: string // 例如"img/jpg"
+        info: string // 分辨率 例如@120x180
     }
 }
 ```
