@@ -66,6 +66,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string //"创建用户成功"||“创建用户失败”
     data:{
         uid: number
     }
@@ -88,6 +89,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string //"没有该用户" || “权限不足” || “获取成功”
     data: {
         uid: number
         username: string
@@ -119,6 +121,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string // “权限不足” || “修改成功” || “无此用户”
     data:{
         uid: number
     }
@@ -139,6 +142,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string //"判断成功" || “出现错误”
     data:{
         username: string
         exist: bool
@@ -176,7 +180,8 @@ Request = {
 
 ```typescript
 interface Response {
-    code: number // code<0失败，code=0成功
+    code: number // code=0成功
+    message: string //"创建成功" || “权限不足”
     data: {
         archive_id: number //创建的帖子id
     }
@@ -192,7 +197,8 @@ interface Response {
 Request = {
     method: "GET",
     params:{
-        page: number
+        page: number //需要获取的页数
+        per_page: number//每页的内容数
     }
 }
 ```
@@ -200,9 +206,12 @@ Request = {
 ```typescript
 interface Response {
     code: number    // 正确为0， 错误为-1，权限不足为-2
-    total: number   // 帖子总数
-    residue：number // 剩余帖子数量
-    data: Item[]	// 具体的内容
+    message: string //"获取成功" || “暂无更多” || “异常错误”
+    data: {
+        total: number   // 帖子总数
+    	residue：number // 剩余帖子数量
+        archives: Item[]
+    }
 }
 ```
 
@@ -239,18 +248,21 @@ Request = {
 ```typescript
 interface Response {
     code: number    // 正确为0， 错误为-1，权限不足为-2
+    message: string // "成功获取帖子","无此帖子" || “无权访问”
     data: {
-    	id: number  
-    	title: string 
-    	author: string 
-    	author_id: number
-    	create_at: string
-    	update_at: string
-    	contents: string //具体的内容
-    	hide: string //隐藏的内容，返回空
-    	cover: string   
-    	kinds: number
-    	views: number
+        archive:{
+            id: number  
+            title: string 
+            author: string 
+            author_id: number
+            create_at: string
+            update_at: string
+            contents: string //具体的内容
+            hide: string //隐藏的内容，返回空
+            cover: string   
+            kinds: number
+            views: number
+        }
     }
 }
 ```
@@ -272,6 +284,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string // "删除成功"|| “无权访问”|| “无此内容”
     data: {
         archive_id: number
         delete_at: string
@@ -307,6 +320,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+     message: string // "更新成功"|| “无权访问”|| “无此内容”
     data: {
         archive_id: number
         update_at: string
@@ -341,6 +355,7 @@ Request = {
 ```typescript
 interface Response {
     code: number    // 正确为0， 错误为-1，权限不足为-2
+    message: string // "评论成功"|| “无权访问”
     data: {
 		seat:number //楼层
         create_at:string //创建时间
@@ -360,7 +375,8 @@ Request = {
         id: number
     }
     query:{
-    	limit:number
+    	page: number //需要获取的页数
+        per_page: number//每页的内容数
     }
 }
 ```
@@ -368,9 +384,12 @@ Request = {
 ```typescript
 interface Response {
     code: number    // 正确为0， 错误为-1，权限不足为-2
-    total: number   // 评论总数
-    residue：number // 剩余评论的数量
-    data: Item[]	// 具体评论的内容
+    message: string // "获取成功"|| “非法操作”
+    data: {
+        total: number   // 评论总数
+        residue：number // 剩余评论的数量
+        discuss: Item[]	// 具体评论的内容
+    }
 }
 ```
 
@@ -399,7 +418,8 @@ Request = {
     query:{
     	kind: number
         keyword: string
-        page: number
+        page: number //需要获取的页数
+        per_page: number//每页的内容数
     }
 }
 ```
@@ -407,9 +427,12 @@ Request = {
 ```typescript
 interface Response {
     code: number
-    totail: number
-    residue：number //剩余
-    data: Item[]
+    message: string // "成功搜索"|| “非法操作”
+    data: {
+        totail: number
+        residue：number //剩余
+        archives: :Item[]
+    }
 }
 ```
 
@@ -430,10 +453,10 @@ interface Item {
 
 
 
-## GET /api/search/target
+## GET /api/search/top
 
 ```typescript
-// 例如：GET `/api/search/target` 搜索相关的内容
+// 例如：GET `/api/search/target` 获取搜索热度
 Request = {
     method: "GET",
 }
@@ -442,7 +465,10 @@ Request = {
 ```typescript
 interface Response {
     code: number
-    data: Item[]
+    message: string // "成功搜索"|| “非法操作”
+    data: {
+        Item[]
+    }
 }
 interface Item {
     keyword: string
@@ -477,6 +503,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string // "登录成功"|| “登录失败”
     data: {
         max_age: string
         cookie: string
@@ -506,6 +533,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string // "退出登录成功"|| “非法操作”
     data: {
         quit_at: string
         uid?: number
@@ -535,6 +563,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string // “判断会话成功”|| “非法操作”
     data: {
         exist: bool
     }
@@ -561,6 +590,7 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string // "识别会话成功"|| “非法操作”
     data: {
         uid: number
         username: bool
@@ -596,9 +626,10 @@ Request = {
 ```typescript
 interface Response {
     code: number
+    message: string // "储存成功" || “已存在” || “非法操作”
     data: {
         hash: string //图片hash
-        url: string  //图片路径
+        url: string  //图片请求路径
     }
 }
 ```
