@@ -31,7 +31,7 @@
 
 + `POST /api/session/login` 登录
 + `GET /api/session/exist` 判断用户是否在线
-+ `POST /api/session/permission` 判断用户权限
++ `POST /api/session/quit` 退出登录
 + `GET /api/session/user` 根据cookie判断用户
 
 ### [static-service](#static-service)
@@ -478,7 +478,38 @@ Request = {
 interface Response {
     code: number
     data: {
+        max_age: string
         cookie: string
+    }
+}
+```
+
+
+
+### POST /api/session/quit
+
+```typescript
+// 例如：GET `/api/session/quit` 退出登录
+Request = {
+    method: "GET",
+    heafers: {
+        "Content-Type": "application/json"
+    }
+    query: {
+    	uid?: number
+    	username?: string
+    	cookie: string
+	}
+}
+```
+
+```typescript
+interface Response {
+    code: number
+    data: {
+        quit_at: string
+        uid?: number
+    	username?: string
     }
 }
 ```
@@ -512,39 +543,10 @@ interface Response {
 
 
 
-### POST /api/session/permission
+### GET /api/session/identify
 
 ```typescript
-// 例如：POST `/api/session/permission` 判断会话中用户的权限
-Request = {
-    method: "GET",
-    heafers: {
-        "Content-Type": "application/json"
-    }
-    body: {
-    	type: number
-    	uid: number
-	}
-}
-```
-
-```typescript
-interface Response {
-    code: number
-    data: {
-        type: number
-        uid: number
-        power: bool
-    }
-}
-```
-
-
-
-### GET /api/session/user
-
-```typescript
-// 例如：POST `/api/session/user` 通过cookie判断会话中用户信息
+// 例如：POST `/api/session/identify` 通过cookie识别用户
 Request = {
     method: "GET",
     heafers: {
