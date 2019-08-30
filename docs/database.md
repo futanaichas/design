@@ -36,6 +36,16 @@
 
 
 
+## Session
+
+> rediss数据库 hash类型
+
+| key             | type   | description       |
+| --------------- | ------ | ----------------- |
+| session_id      | string | 主键(用户 cookie) |
+| ————\| uid      | number | 用户id            |
+| ————\| username | string | 用户名            |
+
 
 
 ## Archive
